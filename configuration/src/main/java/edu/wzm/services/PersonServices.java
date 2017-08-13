@@ -14,6 +14,11 @@ public class PersonServices {
     public void add(){
         Person person = new Person("Alice", 30);
         SqlSession sqlSession = MyBatisUtils.getSqlSession(true);
+        /**
+         * 映射sql的标识字符串。
+         * edu.wzm.mybatis.mapping.PersonMapper是PersonMapper.xml中mapper标签的namespace属性的值，
+         * insert是insert标签的id属性值，通过update标签的id属性值就可以找到要执行的SQL。
+         */
         int result = sqlSession.insert("edu.wzm.mybatis.mapping.PersonMapper.insert", person);
 
         System.out.println(result);
