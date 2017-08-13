@@ -16,6 +16,12 @@ public class MyBatisUtils {
         return new SqlSessionFactoryBuilder().build(is);
     }
 
+    /**
+     * @param autoCommit
+     *      true: 表示创建的SqlSession对象在执行完SQL之后会自动提交事务
+     *      false: 表示创建的SqlSession对象在执行完SQL之后不会自动提交事务，这时就需要我们手动调用sqlSession.commit()提交事务
+     * @return
+     */
     public static SqlSession getSqlSession(boolean autoCommit){
         return getSqlSessionFactory().openSession(autoCommit);
     }
