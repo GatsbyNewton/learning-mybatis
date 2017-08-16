@@ -10,6 +10,8 @@
       <module>annotation</module>
     <module>configuration</module>
     <module>optimized-config</module>
+    <module>mapping-table</module>
+      <module>tables-association</module>
   </modules>
   <packaging>pom</packaging>
 
