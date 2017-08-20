@@ -12,6 +12,7 @@
     <module>optimized-config</module>
     <module>mapping-table</module>
       <module>tables-association</module>
+      <module>dynamic-sql</module>
   </modules>
   <packaging>pom</packaging>
 
