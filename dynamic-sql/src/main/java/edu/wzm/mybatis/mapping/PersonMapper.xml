@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+  为这个mapper指定一个唯一的namespace，namespace的值习惯上设置成包名+sql映射文件名，这样就能够保证namespace的值是唯一的
+  例如：namespace="edu.wzm.mybatis.mapping.PersonMapper"(userMapper.xml文件去除后缀)
+-->
+<mapper namespace="edu.wzm.mybatis.mapping.PersonMapper">
+
+    <resultMap id="PersonMap" type="Person">
+        <id column="id" jdbcType="INTEGER" property="pid" javaType="int"/>
+        <result column="name" jdbcType="VARCHAR" property="pname" javaType="String"/>
+        <result column="age" jdbcType="INTEGER" property="page" javaType="int"/>
+    </resultMap>
+
+    <!-- SELECT -->
+    <!-- if -->
+    <select id="selectWithIf" parameterType="Person" resultMap="PersonMap">
+        select id, name, age
+        from person
+        where 1=1
+
+        <if test="pname != null and pname != '' ">
+            and name = #{pname}
+        </if>
+        <if test="page != null and page != 0 ">
+            and age &lt; #{page}
+        </if>
+    </select>
+
+    <!-- if-where -->
+    <select id="selectWithIfWhere" parameterType="Person" resultMap="PersonMap">
+      select id, name, age
+      from person
+
+      <where>
+          <if test="pname != null and pname != '' ">
+              name = #{pname}
+          </if>
+          <if test="page != null and page != 0 ">
+              and age &lt; #{page}
+          </if>
+      </where>
+    </select>
+
+    <!-- UPDATE -->
+    <!-- if-set -->
+    <update id="updateWithIfSet" parameterType="Person">
+        update person
+
+        <set>
+            <if test="pname != null and pname != '' ">
+                name = #{pname}
+            </if>
+            <if test="page != null and page != 0 ">
+                and age = #{page}
+            </if>
+        </set>
+
+        where id = #{pid}
+    </update>
+
+    <!-- if-trim -->
+    <!-- SELECT -->
+    <select id="selectWithIfTrim" parameterType="Person" resultMap="PersonMap">
+        SELECT id, name, age
+        FROM person
+
+        <trim prefix="WHERE" prefixOverrides="AND|OR">
+            <if test="pname != null and pname != '' ">
+                name = #{pname}
+            </if>
+            <if test="page != null and page != 0 ">
+                AND age &lt; #{page}
+            </if>
+        </trim>
+    </select>
+
+    <!-- UPDATE -->
+    <update id="updateWithIfTrim" parameterType="Person">
+        UPDATE person
+
+        <trim prefix="SET" prefixOverrides=",">
+            <if test="pname != null and pname != '' ">
+                name = #{pname}
+            </if>
+            <if test="page != null and page != 0 ">
+                OR age &lt; #{page}
+            </if>
+        </trim>
+
+        WHERE id = #{pid}
+    </update>
+
+    <!-- choose-when-otherwise -->
+    <select id="selectWithChooseWhen" parameterType="Person" resultMap="PersonMap">
+        SELECT id, name, age
+        FROM person
+
+        <where>
+            <choose>
+                <when test="pname != null and pname != '' ">
+                    name = #{pname}
+                </when>
+                <when test="page != null and page != 0 ">
+                    AND age &lt; #{page}
+                </when>
+                <otherwise>
+
+                </otherwise>
+            </choose>
+        </where>
+    </select>
+
+    <!-- foreach: array -->
+    <select id="selectWithForeachArray" resultMap="PersonMap">
+        SELECT id, name, age
+        FROM person
+        WHERE id IN
+        
+        <foreach collection="array" item="pid" open="(" separator="," close=")">
+          #{pid}
+        </foreach>
+    </select>
+
+    <!-- foreach: list -->
+    <select id="selectWithForeachList" resultMap="PersonMap">
+        SELECT id, name, age
+        FROM person
+        WHERE id IN
+
+        <foreach collection="list" item="pid" open="(" separator="," close=")">
+            #{pid}
+        </foreach>
+    </select>
+</mapper>
