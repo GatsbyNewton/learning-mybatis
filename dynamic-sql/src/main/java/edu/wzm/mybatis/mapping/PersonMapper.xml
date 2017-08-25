@@ -73,7 +73,7 @@
                 name = #{pname}
             </if>
             <if test="page != null and page != 0 ">
-                AND age &lt; #{page}
+                age &lt; #{page}
             </if>
         </trim>
     </select>
@@ -87,7 +87,7 @@
                 name = #{pname}
             </if>
             <if test="page != null and page != 0 ">
-                OR age &lt; #{page}
+                age &lt; #{page}
             </if>
         </trim>
 
