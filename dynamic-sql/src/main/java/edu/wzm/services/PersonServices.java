@@ -25,7 +25,7 @@ public class PersonServices {
     public void selectWithIfWhere(){
         SqlSession sqlSession = MyBatisUtils.getSqlSession();
         Person entity = new Person();
-//        entity.setPname("Jimmy");
+        entity.setPname("Jimmy");
         entity.setPage(30);
         List<Person> persons = sqlSession.selectList("edu.wzm.mybatis.mapping.PersonMapper.selectWithIfWhere", entity);
 

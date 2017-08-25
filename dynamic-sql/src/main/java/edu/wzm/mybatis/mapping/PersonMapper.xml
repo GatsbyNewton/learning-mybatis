@@ -37,7 +37,7 @@
 
       <where>
           <if test="pname != null and pname != '' ">
-              name = #{pname}
+              and name = #{pname}
           </if>
           <if test="page != null and page != 0 ">
               and age &lt; #{page}
