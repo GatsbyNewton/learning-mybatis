@@ -21,8 +21,7 @@
 
     <mappers>
         <!-- 基于XML配置文件 -->
-        <mapper resource="edu/wzm/mybatis/mapping/PersonMapper.xml"/>
-        <!-- 基于注解 -->
-        <!--<mapper class="edu.wzm.mybatis.mapper.PersonMapper"/>-->
+        <!--<mapper resource="edu/wzm/mybatis/mapping/PersonMapper.xml"/>-->
+        <mapper resource="mapper/PersonMapper.xml"/>
     </mappers>
 </configuration>
