@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+  为这个mapper指定一个唯一的namespace，namespace的值习惯上设置成包名+sql映射文件名，这样就能够保证namespace的值是唯一的
+  例如：namespace="edu.wzm.mybatis.mapping.PersonMapper"(userMapper.xml文件去除后缀)
+-->
+<mapper namespace="edu.wzm.mybatis.mapping.PersonMapper">
+  <!--
+    在select、insert、update、delete标签中编写查询的SQL语句， 设置标签的id属性值必须是唯一的，不能够重复。使用parameterType属性
+    指明查询时，使用的参数类型。resultType属性指明查询返回的结果集类型，resultType="Person"就表示将查询
+    结果封装成一个Person类的对象返回，Person类就是person表所对应的实体类。
+  -->
+
+  <insert id="insert" parameterType="edu.wzm.domain.Person">
+    insert into person(name, age) values(#{name}, #{age})
+  </insert>
+
+  <select id="getById" resultType="edu.wzm.domain.Person">
+    select *
+    from person
+    where id = #{id}
+  </select>
+
+  <select id="getAll" resultType="edu.wzm.domain.Person">
+    select * from person;
+  </select>
+
+  <update id="update" parameterType="edu.wzm.domain.Person">
+    update person set age = #{age} where id = #{id}
+  </update>
+
+  <delete id="delete" parameterType="int">
+    delete from person where id = #{id}
+  </delete>
+</mapper>
