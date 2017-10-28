@@ -8,14 +8,14 @@
     <properties resource="db.properties"/>
 
     <!-- 为实体类edu.wzm.mybatis.domain.Person配置一个别名_User -->
-    <!-- <typeAlias type="edu.wzm.mybatis.domain.Person" alias="Person"/> -->
+    <!-- <typeAlias type="edu.wzm.domain.Person" alias="Person"/> -->
 
     <!--
         为edu.wzm.mybatis.domain包下的所有实体类配置别名，MyBatis默认的设置别名的方式就是去除类所在的包后的简单的类名。
-        例如：edu.wzm.mybatis.domain.Person这个实体类的别名就会被设置成Person
+        例如：edu.wzm.domain.Person这个实体类的别名就会被设置成Person
     -->
     <typeAliases>
-        <package name="edu.wzm.mybatis.domain"/>
+        <package name="edu.wzm.domain"/>
     </typeAliases>
 
     <environments default="development">
@@ -32,7 +32,7 @@
 
     <mappers>
         <!-- 基于XML配置文件 -->
-        <mapper resource="edu/wzm/mybatis/mapping/oneToOne.xml"/>
-        <mapper resource="edu/wzm/mybatis/mapping/oneToMany.xml"/>
+        <mapper resource="mapper/OneToOne.xml"/>
+        <mapper resource="mapper/OneToMany.xml"/>
     </mappers>
 </configuration>

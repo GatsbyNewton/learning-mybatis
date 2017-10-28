@@ -7,7 +7,7 @@
     <!-- 引用db.properties配置文件 -->
     <properties resource="db.properties"/>
     <typeAliases>
-        <package name="edu.wzm.mybatis.domain"/>
+        <package name="edu.wzm.domain"/>
     </typeAliases>
 
     <environments default="development">
@@ -24,7 +24,7 @@
 
     <mappers>
         <!-- 基于XML配置文件 -->
-        <mapper resource="edu/wzm/mybatis/mapping/orderMapper.xml"/>
+        <mapper resource="mapper/OrderMapper.xml"/>
         <!-- 基于注解 -->
         <!--<mapper class="edu.wzm.mybatis.mapper.PersonMapper"/>-->
     </mappers>

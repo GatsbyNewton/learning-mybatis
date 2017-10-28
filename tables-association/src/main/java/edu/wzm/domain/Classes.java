@@ -1,4 +1,4 @@
-package edu.wzm.mybatis.domain;
+package edu.wzm.domain;
 
 import java.util.List;
 

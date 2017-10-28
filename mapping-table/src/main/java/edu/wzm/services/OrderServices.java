@@ -1,6 +1,6 @@
 package edu.wzm.services;
 
-import edu.wzm.mybatis.domain.Order;
+import edu.wzm.domain.Order;
 import edu.wzm.tools.MyBatisUtils;
 import org.apache.ibatis.session.SqlSession;
 

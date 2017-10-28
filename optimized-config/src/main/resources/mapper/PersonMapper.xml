@@ -10,7 +10,7 @@
 <mapper namespace="edu.wzm.mybatis.mapping.PersonMapper">
   <!--
     在select、insert、update、delete标签中编写查询的SQL语句， 设置标签的id属性值必须是唯一的，不能够重复。使用parameterType属性
-    指明查询时，使用的参数类型。resultType属性指明查询返回的结果集类型，resultType="edu.wzm.mybatis.domain.Person"就表示将查询
+    指明查询时，使用的参数类型。resultType属性指明查询返回的结果集类型，resultType="edu.wzm.domain.Person"就表示将查询
     结果封装成一个Person类的对象返回，Person类就是person表所对应的实体类。
   -->
 
@@ -28,7 +28,7 @@
     select * from person;
   </select>
 
-  <update id="update" parameterType="edu.wzm.mybatis.domain.Person">
+  <update id="update" parameterType="edu.wzm.domain.Person">
     update person set age = #{age} where id = #{id}
   </update>
 

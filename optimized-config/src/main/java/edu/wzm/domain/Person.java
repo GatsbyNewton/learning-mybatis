@@ -1,4 +1,4 @@
-package edu.wzm.mybatis.domain;
+package edu.wzm.domain;
 
 /**
  * Created by gatsbynewton on 2017/7/15.
