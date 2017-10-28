@@ -7,6 +7,24 @@ public class Student {
 
     private int id;
     private String name;
+    private String sno;
+    private float score;
+
+    public String getSno() {
+        return sno;
+    }
+
+    public void setSno(String sno) {
+        this.sno = sno;
+    }
+
+    public float getScore() {
+        return score;
+    }
+
+    public void setScore(float score) {
+        this.score = score;
+    }
 
     public int getId() {
         return id;
@@ -26,6 +44,13 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student [id=" + id + ", name=" + name + "]";
+        StringBuilder sb = new StringBuilder("Student[")
+                .append("id=" + id)
+                .append(", name=" + name)
+                .append(", sno=" + sno)
+                .append(", score=" + score)
+                .append("]");
+
+        return sb.toString();
     }
 }

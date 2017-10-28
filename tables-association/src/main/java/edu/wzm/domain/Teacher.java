@@ -7,6 +7,15 @@ public class Teacher {
 
     private int id;
     private String name;
+    private String tno;
+
+    public String getTno() {
+        return tno;
+    }
+
+    public void setTno(String tno) {
+        this.tno = tno;
+    }
 
     public int getId() {
         return id;
@@ -26,6 +35,12 @@ public class Teacher {
 
     @Override
     public String toString() {
-        return "Teacher [id=" + id + ", name=" + name + "]";
+        StringBuilder sb = new StringBuilder("Teacher[")
+                .append("id=" + id)
+                .append(", name=" + name)
+                .append(", tno=" + tno)
+                .append("]");
+
+        return sb.toString();
     }
 }

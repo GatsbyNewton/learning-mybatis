@@ -3,13 +3,14 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="edu.wzm.mybatis.mapping.oneToOne">
+<mapper namespace="edu.wzm.dao.TeacherDao">
 
     <select id="selectById" resultMap="TeacherClass" parameterType="int">
-        select c.c_id, c.c_name, t.t_id, t.t_name
-        from class c, teacher t
-        where c.t_id = t.t_id and c.c_id = #{id}
+        SELECT c.c_id, c.c_name, t.t_id, t.t_name
+        FROM class c, teacher t
+        WHERE c.t_id = t.t_id AND c.c_id = #{id}
     </select>
+
     <resultMap id="TeacherClass" type="Classes">
         <id column="c_id" property="id" javaType="int"/>
         <result column="c_name" property="name" javaType="String"/>
@@ -17,6 +18,7 @@
         <association property="teacher" javaType="Teacher">
             <id column="t_id" property="id" javaType="int"/>
             <result column="t_name" property="name" javaType="String"/>
+            <result column="t_no" property="tno" javaType="String"/>
         </association>
     </resultMap>
     
