@@ -3,20 +3,20 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="edu.wzm.mybatis.mapping.orderMapper">
+<mapper namespace="edu.wzm.dao.OrderDao">
 
     <insert id="insert" parameterType="Order">
-        insert into orders(order_no, order_price)
-        values(#{orderNo}, #{price})
+        INSERT INTO orders(order_no, order_price, order_addr, order_phone)
+        VALUES (#{orderNo}, #{price}, #{address}, #{phone})
     </insert>
 
     <!--
         如果表中的字段名和实体类属性名不相同，那么查询出来的结果为 null。
     -->
     <select id="selectWithNothing" parameterType="int" resultType="Order">
-        select order_id, order_no, order_price
-        from orders
-        where order_id = #{id}
+        SELECT order_id, order_no, order_price, order_addr, order_phone
+        FROM orders
+        WHERE order_id = #{id}
     </select>
 
     <!--
@@ -25,9 +25,9 @@
         这是因为将查询的字段名都起一个和实体类属性名相同的别名，这样实体类的属性名和查询结果中的字段名就可以一一对应上。
     -->
     <select id="selectWithAlias" parameterType="int" resultType="Order">
-        select order_id id, order_no orderNo, order_price price
-        from orders
-        where order_id = #{id}
+        SELECT order_id id, order_no orderNo, order_price price, order_addr address, order_phone phone
+        FROM orders
+        WHERE order_id = #{id}
     </select>
 
     <!--
@@ -36,15 +36,31 @@
         这是因为通过 <resultMap> 映射实体类属性名和表的字段名一一对应关系
     -->
     <select id="selectWithMapping" parameterType="int" resultMap="OrderMapping">
-        select order_id, order_no, order_price
-        from orders
-        where order_id = #{id}
+        SELECT order_id, order_no, order_price, order_addr, order_phone
+        FROM orders
+        WHERE order_id = #{id}
     </select>
+
+    <select id="selectPartialOrder" resultMap="PartialOrderMapping">
+        SELECT order_id, order_no, order_price
+        FROM orders
+        WHERE order_id = #{id}
+    </select>
+
     <!-- 通过<resultMap>映射实体类属性名和表的字段名对应关系 -->
     <resultMap id="OrderMapping" type="Order">
         <!-- id属性来映射主键字段 -->
         <id column="order_id" property="id" javaType="int"/>
         <!-- result属性映射非主键字段 -->
+        <result column="order_no" property="orderNo" javaType="String"/>
+        <result column="order_price" property="price"/>
+        <result column="order_addr" property="address" javaType="String"/>
+        <result column="order_phone" property="phone" javaType="String"/>
+    </resultMap>
+
+    <!-- 查询表中的部分字段 -->
+    <resultMap id="PartialOrderMapping" type="java.util.HashMap">
+        <id column="order_id" property="id" javaType="int"/>
         <result column="order_no" property="orderNo" javaType="String"/>
         <result column="order_price" property="price"/>
     </resultMap>

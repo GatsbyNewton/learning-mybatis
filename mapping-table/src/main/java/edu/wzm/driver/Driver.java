@@ -13,5 +13,6 @@ public class Driver {
         services.queryWithNothing();
         services.queryWithAlias();
         services.queryWithMapping();
+        services.queryPartialOrder();
     }
 }

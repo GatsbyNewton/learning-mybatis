@@ -8,14 +8,8 @@ public class Order {
     private int id;
     private String orderNo;
     private float price;
-
-    public Order() {
-    }
-
-    public Order(String orderNo, float price) {
-        this.orderNo = orderNo;
-        this.price = price;
-    }
+    private String address;
+    private String phone;
 
     public int getId() {
         return id;
@@ -41,8 +35,32 @@ public class Order {
         this.price = price;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     @Override
     public String toString() {
-        return "Order: [id=" + id + ", orderNo=" + orderNo + ", price=" + price + "]";
+        StringBuilder sb = new StringBuilder("Orders[")
+                .append("id=" + id)
+                .append(", orderNo=" + orderNo)
+                .append(", price=" + price)
+                .append(", address=" + address)
+                .append(", phone=" + phone)
+                .append("]");
+
+        return sb.toString();
     }
 }
