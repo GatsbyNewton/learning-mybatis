@@ -1,6 +1,6 @@
-package edu.wzm.mybatis.mapping;
+package edu.wzm.dao;
 
-import edu.wzm.mybatis.domain.Person;
+import edu.wzm.domain.Person;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;

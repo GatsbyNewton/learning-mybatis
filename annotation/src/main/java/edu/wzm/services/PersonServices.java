@@ -1,7 +1,7 @@
 package edu.wzm.services;
 
-import edu.wzm.mybatis.domain.Person;
-import edu.wzm.mybatis.mapping.PersonMapper;
+import edu.wzm.domain.Person;
+import edu.wzm.dao.PersonMapper;
 import edu.wzm.tools.MyBatisUtils;
 import org.apache.ibatis.session.SqlSession;
 
