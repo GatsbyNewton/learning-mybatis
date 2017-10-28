@@ -24,6 +24,6 @@
         <!-- 基于XML配置文件 -->
         <!--<mapper resource="edu/wzm/mybatis/mapper/PersonMapper.xml"/>-->
         <!-- 基于注解 -->
-        <mapper class="edu.wzm.mybatis.mapping.PersonMapper"/>
+        <mapper class="edu.wzm.dao.PersonMapper"/>
     </mappers>
 </configuration>
