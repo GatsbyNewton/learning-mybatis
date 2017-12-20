@@ -11,6 +11,12 @@
         WHERE c.t_id = t.t_id AND c.c_id = #{id}
     </select>
 
+    <select id="selectStudent" resultMap="StudentClass">
+        SELECT s.s_id, s.s_name, s.s_no, s.s_score, c.c_id, c.c_name
+        FROM class c, student s
+        WHERE s.c_id = c.c_id
+    </select>
+
     <resultMap id="TeacherClass" type="Classes">
         <id column="c_id" property="id" javaType="int"/>
         <result column="c_name" property="name" javaType="String"/>
@@ -19,6 +25,18 @@
             <id column="t_id" property="id" javaType="int"/>
             <result column="t_name" property="name" javaType="String"/>
             <result column="t_no" property="tno" javaType="String"/>
+        </association>
+    </resultMap>
+
+    <resultMap id="StudentClass" type="java.util.Map">
+        <id column="s_id" property="id" javaType="int"/>
+        <result column="s_name" property="name" javaType="String"/>
+        <result column="s_no" property="sno" javaType="String"/>
+        <result column="s_score" property="score" javaType="float"/>
+
+        <association property="classes" javaType="java.util.Map">
+            <id column="c_id" property="id" javaType="int"/>
+            <result column="c_name" property="name" javaType="String"/>
         </association>
     </resultMap>
     
