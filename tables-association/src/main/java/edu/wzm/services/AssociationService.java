@@ -52,4 +52,12 @@ public class AssociationService {
         System.out.println(mapper.selectById(2));
         sqlSession.close();
     }
+
+    public void queryStudent(){
+        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+        TeacherDao mapper = sqlSession.getMapper(TeacherDao.class);
+
+        System.out.println(mapper.selectStudent());
+        sqlSession.close();
+    }
 }

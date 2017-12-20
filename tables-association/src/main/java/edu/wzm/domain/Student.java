@@ -10,6 +10,8 @@ public class Student {
     private String sno;
     private float score;
 
+//    private Classes classes;
+
     public String getSno() {
         return sno;
     }
@@ -49,6 +51,7 @@ public class Student {
                 .append(", name=" + name)
                 .append(", sno=" + sno)
                 .append(", score=" + score)
+//                .append(", classes=" + classes)
                 .append("]");
 
         return sb.toString();

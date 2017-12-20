@@ -9,12 +9,14 @@ public class Driver {
 
     public static void main(String[] args){
         AssociationService service = new AssociationService();
-        service.queryOneToMany();
-        service.queryOneToManyAll();
+//        service.queryOneToMany();
+//        service.queryOneToManyAll();
+//
+//        service.queryOneToManyPartial();
+//        service.queryOneToManyPartialAll();
+//
+//        service.queryOneToOneById();
 
-        service.queryOneToManyPartial();
-        service.queryOneToManyPartialAll();
-
-        service.queryOneToOneById();
+        service.queryStudent();
     }
 }
