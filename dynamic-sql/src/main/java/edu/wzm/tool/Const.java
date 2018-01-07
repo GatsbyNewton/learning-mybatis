@@ -1,4 +1,4 @@
-package edu.wzm.tools;
+package edu.wzm.tool;
 
 /**
  * Created by gatsbynewton on 2017/7/16.
