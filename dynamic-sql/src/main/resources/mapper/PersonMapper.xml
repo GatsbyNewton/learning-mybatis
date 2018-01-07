@@ -30,6 +30,22 @@
         </if>
     </select>
 
+    <!-- if -->
+    <select id="selectWithTwoLevelIf" parameterType="Person" resultMap="PersonMap">
+        select id, name, age
+        from person
+        where 1=1
+
+        <if test="pid gt 1">
+            <if test="pname != null and pname != '' ">
+                and name = #{pname}
+            </if>
+            <if test="page != null and page != 0 ">
+                and age &lt; #{page}
+            </if>
+        </if>
+    </select>
+
     <!-- if-where -->
     <select id="selectWithIfWhere" parameterType="Person" resultMap="PersonMap">
       select id, name, age
@@ -106,6 +122,32 @@
                 </when>
                 <when test="page != null and page != 0 ">
                     AND age &lt; #{page}
+                </when>
+                <otherwise>
+
+                </otherwise>
+            </choose>
+        </where>
+    </select>
+
+    <select id="selectWithTwoLevelChooseWhen" parameterType="Person" resultMap="PersonMap">
+        SELECT id, name, age
+        FROM person
+
+        <where>
+            <choose>
+                <when test="pid gt 1">
+                    <choose>
+                        <when test="pname != null and pname != '' ">
+                            name = #{pname}
+                        </when>
+                        <when test="page != null and page != 0 ">
+                            AND age &lt; #{page}
+                        </when>
+                        <otherwise>
+
+                        </otherwise>
+                    </choose>
                 </when>
                 <otherwise>
 
